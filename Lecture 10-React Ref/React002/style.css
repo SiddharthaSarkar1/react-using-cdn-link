@@ -1,0 +1,42 @@
+.container{
+    border: 1px solid green;
+    margin: 0 auto;
+    background-color: cyan;
+}
+
+
+.newsContainer{
+    font-size: 20px;
+    color: red;
+}
+
+button{
+    height: 50px;
+    width: 90px;
+    padding: 10px;
+    margin: 5px 20px;
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    background: crimson;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    transition: all 0.8s ease;
+}
+
+
+button:hover.delete{
+    
+    font-weight: 600;
+    color: crimson;
+    border: 2px solid crimson;
+    background: none;
+}
+
+button:hover.edit{
+    
+    font-weight: 600;
+    color: crimson;
+    border: 2px solid crimson;
+    background: greenyellow;
+}

@@ -1,0 +1,48 @@
+//const
+const a=1;
+// X nit possible a=2; X
+
+//let
+let b=2;
+b=3;
+//alert ("value of b "+ b);
+//JSON variable
+let bdCity = {
+  "dhaka" : "20M",
+  "cgong" : "10M"
+}
+
+//alert("Dhaka population "+bdCity.dhaka);
+
+//Destructuring
+
+let{dhaka : Dhaka,cgong : Chittagong} = bdCity;
+//alert("Chitagong population "+Chittagong);
+
+//fat arrow function
+const fatSum = (a,b) => a + b;
+
+//alert(fatSum(2,4));
+
+const squareF = a => a*a;
+
+//alert(squareF(6));
+
+// forEach
+const arrayList = [1,2,3];
+let sumation = 0;
+//arrayList.forEach(function(item){
+//sumation = sumation + item;
+//alert(item);
+//})
+
+//alert(sumation);
+
+arrayList.forEach(item => sumation = sumation + item)
+
+//alert("sumation : "+sumation);
+
+const squareArray = arrayList.map(squareF);
+//alert("Square Array "+squareArray);
+
+//map work on the fuction and then return it

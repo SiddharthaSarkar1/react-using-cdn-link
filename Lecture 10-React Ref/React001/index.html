@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Hello World</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+
+    class HotNews extends React.Component {
+      constructor(props){
+        super(props);
+        this.state = {
+          totalEditCount: 0
+        };
+        this.inputText = React.createRef();
+      }
+      edit(){
+        alert("edit button clicked");
+        this.setState({
+          totalEditCount: this.state.totalEditCount + 1
+        });
+      }
+      delete(){
+        alert("delete button clicked");
+      }
+
+      render() {
+        const props = this.props;
+        const totalEditCount = this.state.totalEditCount;
+        return (
+          <div className="newsContainer">
+          <h1 ref={this.inputText}>{props.title}</h1>
+            <p>{props.children}</p>
+            <div class="action">
+              <button className="edit"
+              onClick={() => this.edit()}>Edit</button>
+              <button className="delete" onClick={this.delete}>Delete</button>
+            </div>
+          </div>
+        ) 
+      }
+    }
+
+
+
+    ReactDOM.render(
+      <div className="container">
+        <HotNews title="news 1">Mustafiz plays today</HotNews>
+        <HotNews title="news 2">East or West INDIA is the Best.</HotNews>
+      </div>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+
+</html>

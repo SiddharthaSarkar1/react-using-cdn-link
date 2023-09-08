@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const Avatarlist = (props) => {
+            return(
+                <div className="avatarS ma4 bg-light-purple dib pa4 tc br4">
+                <img src={`https://joeschmoe.io/api/v1/${props.name}`} alt="Avatar"/>
+                <h1>{props.name}</h1>
+                <p>{props.work}</p>
+                </div>
+            );
+        }
+
+        const Avatar = (props) => {
+            const AvatarArrayList = [
+                {
+                    id: 1, 
+                    name: "Sid sarkar", 
+                    work: "Web Developer"
+                },
+                {
+                    id: 2, 
+                    name: "papai roy", 
+                    work: "Web Designer"
+                },
+                {
+                    id: 3, 
+                    name: "tukai sarkar", 
+                    work: "Amazon"
+                },
+                {
+                    id: 4, 
+                    name: "Sidh sarkar", 
+                    work: "Google"
+                }
+
+            ]
+
+            
+
+
+
+            return(
+                <div>
+                <h1>Welcome to Avatar World</h1>
+                <Avatarlist id={AvatarArrayList[0].id} 
+                            name={AvatarArrayList[0].name} 
+                            work={AvatarArrayList[0].work} 
+                            />
+                <Avatarlist id={AvatarArrayList[0].id} 
+                            name={AvatarArrayList[1].name} 
+                            work={AvatarArrayList[1].work}
+                            />
+                <Avatarlist id={AvatarArrayList[0].id} 
+                            name={AvatarArrayList[2].name} 
+                            work={AvatarArrayList[2].work}/>
+                <Avatarlist id={AvatarArrayList[0].id} 
+                            name={AvatarArrayList[3].name} 
+                            work={AvatarArrayList[3].work}
+                            />
+                <button> Subscribe </button>
+                </div>
+            );
+        }
+
+      ReactDOM.render(
+            <React.Fragment>
+                <Avatar />
+            </React.Fragment>,
+        document.getElementById('root')
+      );
+
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>

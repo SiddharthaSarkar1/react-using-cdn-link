@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Lecture 11</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+  <!-- Don't use this in production: -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+
+
+    class HotNews extends React.Component {
+      constructor(props){
+        super(props);
+        this.state = {
+          isEditing: false,
+          description: props.children
+        };
+        this.inputText = React.createRef();
+      }
+      edit(){
+        this.setState({
+          isEditing : true
+        });
+      }
+      delete(){
+        alert("delete button clicked");
+      }
+
+      save(){
+        const inputValue = this.inputText.current.value;
+        this.setState({
+            isEditing: false,
+            description: inputValue
+        });
+      }
+
+      renderEdit(){
+        const isEditing = this.state.isEditing;
+        const props = this.props;
+        if(isEditing === true){
+          return(
+            <React.Fragment>
+            <input
+            defaultValue={props.children} 
+            ref={this.inputText}
+            />
+            <button onClick={() => this.save()}> Save</button>
+            </React.Fragment>
+          )
+        }else{
+          return(
+            <p>{this.state.description}</p>
+          )
+        }
+      }
+      render() {
+        const props = this.props;
+        const totalEditCount = this.state.totalEditCount;
+        console.log("isEditing : ",this.state.isEditing);
+        return (
+          <div className="newsContainer">
+          <h1>{props.title}</h1>
+            {this.renderEdit()}
+            <div className="action">
+              <button className="edit"
+              onClick={() => this.edit()}>Edit</button>
+              <button className="delete" onClick={this.delete}>Delete</button>
+            </div>
+          </div>
+        ) 
+      }
+    }
+
+
+
+    ReactDOM.render(
+      <div className="container">
+        <HotNews title="news 1">Mustafiz plays today</HotNews>
+        <HotNews title="news 2">East or West INDIA is the Best.</HotNews>
+      </div>,
+      document.getElementById('root')
+    );
+  </script>
+</body>
+
+</html>
